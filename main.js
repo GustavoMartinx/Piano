@@ -15,7 +15,8 @@ function playNote(event) {
         return;
     }
     
-    playAudio(audioKeyCode);
+    addPlayingClass(key)
+    playAudio(audioKeyCode)
     
 }
 
@@ -38,9 +39,18 @@ function playAudio(audioKeyCode) {
     audio.play()
 }
 
+function addPlayingClass(key) {
+    key.classList.add('playing')
+}
+
+function removePlayingClass(event) {
+    event.target.classList.remove("playing")
+}
+
 // Clicking with mouse
 keys.forEach(function(key){
     key.addEventListener("click", playNote)
+    key.addEventListener("transitionend", removePlayingClass)
 })
 
 // Keyboard type
